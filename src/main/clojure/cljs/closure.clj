@@ -1659,6 +1659,7 @@
   (let [module (get (:modules opts) (:module-name opts))
         asset-path (or (:asset-path opts)
                        (util/output-directory opts))
+        asset-path (clojure.string/replace asset-path #"\\" "/")
         closure-defines (json/write-str (:closure-defines opts))]
     (case (:target opts)
       (:nashorn :graaljs)
